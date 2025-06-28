@@ -1,11 +1,11 @@
-// src/firebase/config.js
+// src/firebase/config.ts (تغيير الامتداد من .js إلى .ts)
 
-// استيراد الوظائف الأساسية من Firebase
-import { initializeApp, getApps } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+// استيراد الوظائف الأساسية من Firebase مع أنواع البيانات
+import { initializeApp, getApps, FirebaseApp } from "firebase/app";
+import { getAnalytics, Analytics } from "firebase/analytics";
+import { getFirestore, Firestore } from "firebase/firestore";
+import { getAuth, Auth } from "firebase/auth";
+import { getStorage, FirebaseStorage } from "firebase/storage";
 
 // تكوين تطبيق Firebase الخاص بك
 const firebaseConfig = {
@@ -18,13 +18,12 @@ const firebaseConfig = {
   measurementId: "G-JRP54Z9B3X"
 };
 
-// تهيئة Firebase فقط إذا لم تكن هناك تطبيقات موجودة بالفعل
-// هذا مهم لـ Next.js لتجنب محاولة تهيئة التطبيق مرتين
-let firebaseApp;
-let analytics;
-let db;
-let auth;
-let storage;
+// تعريف المتغيرات مع أنواع البيانات
+let firebaseApp: FirebaseApp;
+let analytics: Analytics | null = null;
+let db: Firestore;
+let auth: Auth;
+let storage: FirebaseStorage;
 
 if (typeof window !== 'undefined' && !getApps().length) {
   // تهيئة Firebase

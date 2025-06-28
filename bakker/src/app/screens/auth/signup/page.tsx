@@ -2,7 +2,7 @@
 "use client";
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import Patient from "../../../models/Patient";
+import Patient from "../../../../models/Patient"; // مسار محدث للاستيراد
 import Link from "next/link";
 
 export default function SignupPage() {
